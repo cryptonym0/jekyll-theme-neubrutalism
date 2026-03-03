@@ -290,6 +290,44 @@ ul li::marker {
   font-size: 1.2em;
 }
 
+/* IMAGES */
+img {
+  max-width: 100%;
+  height: auto;
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5em;
+  display: block;
+}
+
+/* DEFINITION LISTS */
+dl {
+  margin-bottom: 1.5em;
+  padding: 20px;
+  background-color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+dt {
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: 0.8em;
+  font-size: 1.1em;
+}
+
+dt:first-child {
+  margin-top: 0;
+}
+
+dd {
+  margin-left: 2em;
+  margin-bottom: 0.5em;
+  padding-left: 10px;
+  border-left: 3px solid var(--color-secondary);
+}
+
 /* POST LIST */
 .post-list-section {
   margin-top: 60px;

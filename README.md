@@ -1,7 +1,7 @@
 # Neubrutalist Jekyll Theme
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://cryptonym0.github.io/jekyll-theme-neubrutalism/)
-[![Gem Version](https://img.shields.io/badge/gem-v0.1.0-blue)](https://rubygems.org/gems/jekyll-theme-neubrutalism)
+[![Gem Version](https://img.shields.io/badge/gem-v0.2.0-blue)](https://rubygems.org/gems/jekyll-theme-neubrutalism)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A straightforward Jekyll theme that applies neubrutalist design principles in a clean, maintainable way. The goal is to provide a functional, high‑contrast interface with clearly defined structure—useful for documentation, internal notes, and personal sites where clarity is more important than polish.
@@ -25,6 +25,8 @@ The result is a UI that is easy to read, easy to navigate, and visually explicit
 - **Clear, explicit visual design** using bold borders and shadows
 - **Customizable color system** built around simple CSS variables
 - **Responsive layouts** that work across devices
+- **Responsive images** that automatically scale to fit viewport
+- **Styled definition lists** with consistent neubrutalism aesthetic
 - **GitHub Pages compatible** with no additional setup
 - **Space Grotesk and Space Mono** for a clean, technical type system
 - **Pure CSS** with no frameworks or unnecessary dependencies

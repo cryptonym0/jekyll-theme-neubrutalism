@@ -98,20 +98,20 @@ end
 
 ### Large image
 
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
+![Branching](https://docs.github.com/assets/cb-23923/mw-1440/images/help/repository/branching.webp)
 
 
 ### Definition lists can be used with HTML syntax.
 
 <dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
+  <dt>Name</dt>
+  <dd>Godzilla</dd>
+  <dt>Born</dt>
+  <dd>1952</dd>
+  <dt>Birthplace</dt>
+  <dd>Japan</dd>
+  <dt>Color</dt>
+  <dd>Green</dd>
 </dl>
 
 ```
