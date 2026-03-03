@@ -1,0 +1,164 @@
+---
+layout: default
+---
+
+<div class="docs-container">
+  <!-- Sidebar Navigation -->
+  <aside class="docs-sidebar">
+    <nav class="docs-nav">
+      <div class="docs-nav-header">
+        <h3>{{ page.category | default: "Documentation" }}</h3>
+      </div>
+
+      {% if page.docs_nav %}
+        <ul class="docs-nav-list">
+          {% for item in page.docs_nav %}
+            <li class="docs-nav-item {% if item.url == page.url %}active{% endif %}">
+              <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+              {% if item.children %}
+                <ul class="docs-nav-sublist">
+                  {% for child in item.children %}
+                    <li class="docs-nav-subitem {% if child.url == page.url %}active{% endif %}">
+                      <a href="{{ child.url | relative_url }}">{{ child.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <!-- Auto-generate nav from site pages with same category -->
+        <ul class="docs-nav-list">
+          {% assign docs_pages = site.pages | where: "layout", "docs" | where: "category", page.category | sort: "order" %}
+          {% for doc in docs_pages %}
+            <li class="docs-nav-item {% if doc.url == page.url %}active{% endif %}">
+              <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <!-- Table of Contents -->
+      {% if page.toc != false %}
+        <div class="docs-toc">
+          <h4>On This Page</h4>
+          <div id="toc-content">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+      {% endif %}
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="docs-content">
+    <article class="docs-article">
+      <!-- Breadcrumbs -->
+      {% if page.breadcrumbs %}
+        <nav class="breadcrumbs">
+          {% for crumb in page.breadcrumbs %}
+            {% if forloop.last %}
+              <span class="breadcrumb-item active">{{ crumb.title }}</span>
+            {% else %}
+              <a href="{{ crumb.url | relative_url }}" class="breadcrumb-item">{{ crumb.title }}</a>
+              <span class="breadcrumb-separator">→</span>
+            {% endif %}
+          {% endfor %}
+        </nav>
+      {% endif %}
+
+      <!-- Header -->
+      <header class="docs-header">
+        <h1 class="docs-title">{{ page.title }}</h1>
+        {% if page.description %}
+          <p class="docs-description">{{ page.description }}</p>
+        {% endif %}
+
+        <!-- Meta Info -->
+        <div class="docs-meta">
+          {% if page.version %}
+            <span class="docs-version">Version: {{ page.version }}</span>
+          {% endif %}
+          {% if page.date %}
+            <span class="docs-date">Updated: {{ page.date | date: "%b %-d, %Y" }}</span>
+          {% endif %}
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="docs-body">
+        {{ content }}
+      </div>
+
+      <!-- Footer Navigation -->
+      <footer class="docs-footer">
+        <div class="docs-nav-buttons">
+          {% if page.previous_doc %}
+            <a href="{{ page.previous_doc.url | relative_url }}" class="docs-nav-btn docs-nav-prev">
+              <span class="docs-nav-label">← Previous</span>
+              <span class="docs-nav-title">{{ page.previous_doc.title }}</span>
+            </a>
+          {% endif %}
+
+          {% if page.next_doc %}
+            <a href="{{ page.next_doc.url | relative_url }}" class="docs-nav-btn docs-nav-next">
+              <span class="docs-nav-label">Next →</span>
+              <span class="docs-nav-title">{{ page.next_doc.title }}</span>
+            </a>
+          {% endif %}
+        </div>
+
+        <!-- Edit on GitHub -->
+        {% if site.github_repo and page.path %}
+          <div class="docs-edit">
+            <a href="{{ site.github_repo }}/edit/main/{{ page.path }}" target="_blank" class="docs-edit-link">
+              Edit this page on GitHub
+            </a>
+          </div>
+        {% endif %}
+      </footer>
+    </article>
+  </main>
+</div>
+
+<!-- Table of Contents Generator Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const content = document.querySelector('.docs-body');
+  const tocContent = document.getElementById('toc-content');
+
+  if (!content || !tocContent) return;
+
+  const headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    document.querySelector('.docs-toc').style.display = 'none';
+    return;
+  }
+
+  const tocList = document.createElement('ul');
+  tocList.className = 'toc-list';
+
+  headings.forEach((heading, index) => {
+    const id = heading.id || `heading-${index}`;
+    heading.id = id;
+
+    const li = document.createElement('li');
+    li.className = heading.tagName === 'H2' ? 'toc-item' : 'toc-subitem';
+
+    const a = document.createElement('a');
+    a.href = `#${id}`;
+    a.textContent = heading.textContent;
+    a.onclick = function(e) {
+      e.preventDefault();
+      heading.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, null, `#${id}`);
+    };
+
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  tocContent.appendChild(tocList);
+});
+</script>

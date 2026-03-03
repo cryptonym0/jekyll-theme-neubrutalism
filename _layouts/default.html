@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  {% seo %}
+  {% feed_meta %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav class="site-nav">
+        <a href="{{ '/' | relative_url }}">HOME</a>
+        <a href="{{ '/docs/' | relative_url }}">DOCS</a>
+        <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="wrapper {% if page.layout == 'docs' %}docs-wrapper{% endif %}">
+      {{ content }}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-content">
+        <p class="footer-text">{{ site.description }}</p>
+        <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} cryptonym0/jekyll-theme-neubrutalism </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
