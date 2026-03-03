@@ -1,5 +1,4 @@
 # Jekyll build output
-_site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
@@ -8,8 +7,8 @@ _site/
 vendor/
 .bundle/
 
-# Gem builds
-*.gem
+# Gem builds (keep the built gem for releases)
+# *.gem
 
 # OS files
 .DS_Store

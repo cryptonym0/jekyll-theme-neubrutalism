@@ -1,6 +1,12 @@
 # Neubrutalist Jekyll Theme
 
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://cryptonym0.github.io/jekyll-theme-neubrutalism/)
+[![Gem Version](https://img.shields.io/badge/gem-v0.1.0-blue)](https://rubygems.org/gems/jekyll-theme-neubrutalism)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A straightforward Jekyll theme that applies neubrutalist design principles in a clean, maintainable way. The goal is to provide a functional, high‑contrast interface with clearly defined structure—useful for documentation, internal notes, and personal sites where clarity is more important than polish.
+
+**[View Live Demo →](https://cryptonym0.github.io/jekyll-theme-neubrutalism/)**
 
 ## What Is Neubrutalism?
 
@@ -45,8 +51,15 @@ Add to your `_config.yml`:
 ```yaml
 remote_theme: cryptonym0/jekyll-theme-neubrutalism
 plugins:
+  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
+```
+
+Add to your `Gemfile`:
+
+```ruby
+gem "jekyll-remote-theme"
 ```
 
 ### Option 2: As a Gem
@@ -68,6 +81,7 @@ Then run: `bundle install`
 
 ## 📖 Documentation
 
+- **[GitHub Pages Setup](GITHUB_PAGES_SETUP.md)** - Deploy your own demo site
 - **[Installation Guide](INSTALLATION.md)** - Detailed setup instructions
 - **[Publishing Guide](PUBLISHING.md)** - How to distribute this theme
 - **[Changelog](CHANGELOG.md)** - Version history
